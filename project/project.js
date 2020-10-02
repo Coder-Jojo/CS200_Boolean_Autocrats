@@ -10,3 +10,28 @@
   };
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  
+  
+  $(document).ready(function(){
+    $('.carousel').carousel({
+    onCycleTo: function (ele) {
+      console.log(ele);
+      console.log($(ele).index()); // the slide's index
+	  var carousellength=document.getElementsByTagName("img").length;
+	  var carouselitem=document.getElementsByTagName("img");
+	  for(var i=0;i<carousellength;i++)
+	  {
+		if($(ele).index()==i)
+		{
+			var filename=carouselitem[i].name;
+			filename+=".mp3";
+			var storage=firebase.storage().ref(filename);
+			storage.getDownloadURL().then(function(url){document.getElementById("playing-song").src=url;})
+                                         .catch(function(error){M.toast({html:"Network issue",classes:'rounded'});});
+		}
+	  }
+	
+	  
+    }
+});
+  });
