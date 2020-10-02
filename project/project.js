@@ -1,3 +1,8 @@
+ M.AutoInit();
+
+window.addEventListener('offline',()=> M.toast({html:'Network issue',classes:'rounded'}));
+
+ 
  var firebaseConfig = {
     apiKey: "AIzaSyDUxWO-nES7JOCY3G1VrX2z97QYKwudOFk",
     authDomain: "previous-papers-b0d21.firebaseapp.com",
@@ -10,6 +15,43 @@
   };
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  document.querySelector(".myfile").addEventListener("change",(e) => {
+console.log(e);
+for(var i=0;i<e.target.files.length;i++)
+{
+
+var storageRef=firebase.storage().ref(e.target.files[i].name);
+
+storageRef.getDownloadURL().then(function(url){
+M.toast({html:'The song has already uploaded!',classes:'rounded'});
+document.getElementById("form").reset();
+}).catch(function(error){});
+
+
+var task=storageRef.put(e.target.files[i]);
+task.on("state_changed",(s) =>{
+console.log((s.bytesTransferred/s.totalBytes)*100);
+document.querySelector(".progress1").value=(s.bytesTransferred/s.totalBytes)*100;
+if(document.querySelector(".progress1").value==100)
+{
+M.toast({html:"Your file has been uploaded!",classes:'rounded'});
+document.querySelector(".progress1").value=0;
+}
+//else
+//{
+//M.toast({html:'Network issue, upload again',classes:'rounded'});
+//console.log("Network issue");
+//}
+
+});
+
+
+
+
+}
+
+});
+
   
   
   $(document).ready(function(){
