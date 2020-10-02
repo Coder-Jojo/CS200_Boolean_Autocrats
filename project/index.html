@@ -60,3 +60,36 @@
                         
                             <label for="artist_name" style="color: white; font-weight: 640;"><b>Artist Name</b></label><br>
                             <input type="text" placeholder="ex: Billie Eillish" name="artist_name" id="artist_name"><br><br>
+ 
+                        
+                            <label for="audio" style="color: white; font-weight: 640;"><b>Choose song from your system</b></label><br>
+                            <input type="file" placeholder="upload audio file here" name="audio" class="myfile" size="100" />
+			
+							<progress class="progress1" min="0" max="100" value="0" width="30"></progress><br>
+
+                            <label for="thumbnail" style="color: white; font-weight: 640;"><b>Upload thumbnail</b></label><br>
+                            <input type="file" value="upload image file here" name="thumbnail" class="thumbnail">
+
+							<progress class="progress2" min="0" max="100" value="0"></progress><br>
+							<button type="submit" class="registerbtn" onclick="checkexist()">Add to queue</button>
+                            <hr>   
+                        </div>
+                        <!--<div class="reg2" id="re2">
+                            <button  onclick="hide_up()" class="but" id="upbut" style="align-self: center;">
+                                <div>Upload</div>
+                            </button>
+                        </div>-->
+                    </form>
+                </div>
+				<hr width="1" size="200">
+            </div>
+			
+            <div class="queue">
+				<span><h1 style="color: white;" id="upload">Queue</h1> 
+				<button type="submit" class="registerbtn" onclick="play_next()">Play queue</button></span>
+				<div id="qqq">
+
+				</div>
+            </div>
+        </div>
+
