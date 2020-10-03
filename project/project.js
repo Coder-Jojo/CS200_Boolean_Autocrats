@@ -37,11 +37,6 @@ if(document.querySelector(".progress1").value==100)
 M.toast({html:"Your file has been uploaded!",classes:'rounded'});
 document.querySelector(".progress1").value=0;
 }
-//else
-//{
-//M.toast({html:'Network issue, upload again',classes:'rounded'});
-//console.log("Network issue");
-//}
 
 });
 
@@ -97,5 +92,99 @@ document.querySelector(".progress2").value=0;
 }
 });
 }
+
+});
+
+function imageoncarousel(url,filename)
+{
+
+				var divmain=document.getElementById("grandparent");
+				var newdiv=document.createElement("div");
+				newdiv.classList.add('carousel-item');
+			
+				var image=document.createElement("img");
+				image.src=url;
+				
+				var song_name=filename;
+				image.setAttribute("name",song_name);
+				newdiv.appendChild(image);
+				//divmain.appendChild(newdiv);
+				divmain.insertBefore(newdiv, divmain.firstChild);
+
+				
+
+				var elems3 = document.querySelectorAll('.carousel');
+				var instances3 = M.Carousel.init(elems3);				
+										 
+	  $('.carousel').carousel({
+      onCycleTo: function (ele) {
+      console.log(ele);
+      console.log($(ele).index()); 
+	  var carousellength=document.getElementsByTagName("img").length;
+	  var carouselitem=document.getElementsByTagName("img");
+	  for(var i=carousellength-1;i>=0;i--)
+	  {
+		if($(ele).index()==i)
+		{
+			var filen=carouselitem[i].name;
+			filen+=".mp3";
+			var storage=firebase.storage().ref(filen);
+			storage.getDownloadURL().then(function(url){document.getElementById("playing-song").src=url;})
+                                         .catch(function(error){M.toast({html:"Network issue",classes:'rounded'});});
+		}
+	  }
+    }
+
+	});
+	var xx = document.getElementById("playing-song");
+	xx.play();
+}
+
+
+document.getElementById("play").addEventListener("click",function(){
+
+
+var filename=document.getElementById("song-search").value;
+var newname;
+
+var newname=filename+".mp3";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+				})
+                                         .catch(function(error){M.toast({html:'The song has not been uploaded yet!',classes:'rounded'});});
+
+
+newname=filename+".jpg";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+				imageoncarousel(url,filename);
+				})
+                                         .catch(function(error){});
+
+newname=filename+".jpeg";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+				imageoncarousel(url,filename);
+				})
+                                         .catch(function(error){});
+				 
+newname=filename+".png";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+				imageoncarousel(url,filename);
+				})
+                                         .catch(function(error){});
+
+newname=filename+".webp";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+				imageoncarousel(url,filename);
+				})
+                                         .catch(function(error){});
+ 
+setTimeout(function(){
+	document.getElementById("playing-song").play();
+}, 1500);
+				
 
 });
