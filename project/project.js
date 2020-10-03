@@ -77,3 +77,25 @@ document.querySelector(".progress1").value=0;
     }
 });
   });
+  
+  
+  
+document.querySelector(".thumbnail").addEventListener("change",(e) => {
+console.log(e);
+for(var i=0;i<e.target.files.length;i++)
+{
+var storageRef=firebase.storage().ref(e.target.files[i].name);
+var songname=e.target.files[i].name;
+var task=storageRef.put(e.target.files[i]);
+task.on("state_changed",(s) =>{
+console.log((s.bytesTransferred/s.totalBytes)*100);
+document.querySelector(".progress2").value=(s.bytesTransferred/s.totalBytes)*100;
+if(document.querySelector(".progress2").value==100)
+{
+M.toast({html:"Your thumbnail has been uploaded!",classes:'rounded'});
+document.querySelector(".progress2").value=0;
+}
+});
+}
+
+});
