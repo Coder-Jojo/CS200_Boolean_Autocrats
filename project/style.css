@@ -117,3 +117,81 @@ input[type=text] {
     color: darkorange;
     font-weight: 300;
   }
+
+	#upbut{
+     grid-column: 2/3;
+     grid-row: 2;
+     background-color: darkorange;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    transition: transform 1s;
+  }
+
+  #upbut:hover{
+    opacity:1;
+    /*border: 1px solid rgb(255, 230, 0);*/
+    background-color: rgb(255, 115, 0);
+    color: black;
+    font-weight: bold;
+    transform: scale(1.1);
+    border: 1px solid rgb(2, 3, 75);
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  
+  
+  .queue_elem {
+    display: grid;
+    grid-template-columns: 13% 65% 15%;
+    height: 60px;
+    width: 97%;
+    /*margin: auto;*/
+    margin-bottom: 20px;
+  }
+
+  .queue_img {
+    grid-column: 1/2;
+    height: 65px;
+    border-radius: 25px;
+    position: relative;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+  }
+
+  .detail {
+    grid-column: 2/3;
+  }
+
+  .artist {
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    color: #e5e5e5;
+    font-size: 14px;
+    left: 10px;
+    top: 30px;
+  }
+
+  .sonee {
+    position: relative;
+    height: 35px;
+    width: 225px;
+    word-wrap: none;
+    overflow-y: hidden;
+    overflow-x: auto;
+    color: #e5e5e5;
+    font-size: 24px;
+    left: 10px;
+    top: 4px;
+  }
