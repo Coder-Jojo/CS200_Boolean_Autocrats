@@ -334,6 +334,50 @@ newname=filename+".webp";
                                          .catch(function(error){});
 }
 
+
+function mea(song){
+	sea(song);
+	setTimeout(function(){
+	document.getElementById("playing-song").play();
+	}, 1000);
+
+}
+function put(url, img){
+	img.src = url;
+}
+
+function quett(filename, img){
+var newname;
+newname=filename+".jpg";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+					put(url, img);
+				})
+                                         .catch(function(error){});
+
+newname=filename+".jpeg";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+					put(url, img);
+				})
+                                         .catch(function(error){});
+				 
+newname=filename+".png";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+					put(url, img);
+				})
+                                         .catch(function(error){});
+
+newname=filename+".webp";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+					put(url, img);
+				})
+                                         .catch(function(error){});
+}
+
+
 </script>
 </body>
 </html>
