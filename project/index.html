@@ -379,5 +379,73 @@ newname=filename+".webp";
 
 
 </script>
+<script>
+	class Node {
+		constructor(song, artist) {
+			this.song = song;
+			this.artist = artist;
+			this.next = null;
+		}
+	}
+
+	class Queue {
+		constructor() {
+			this.front = null;
+			this.back = null;
+		}
+
+		isEmpty() {
+			return !this.front;
+		}
+
+		enqueue(song, artist) {
+			console.log('ENQUEUE', song, artist);
+			let node = new Node(song, artist);
+			if (this.isEmpty()) {
+			this.front = this.back = node;
+			}
+			else {
+			this.back.next = node;
+			this.back = node;
+			}
+			var tt = document.createElement("div");
+			tt.className += "queue_elem";
+			var im = document.createElement("img");
+			im.className += "queue_img";
+			quett(song, im);
+			tt.appendChild(im);
+			var nt = document.createElement("div");
+			nt.className += "detail";
+			tt.appendChild(nt);
+			var art = document.createElement("p");
+			art.className += "artist";
+			if(artist == ""){
+				artist = song;
+			}
+			art.innerHTML = artist;
+			var son = document.createElement("p");
+			son.classList.add("sonee");
+			son.innerHTML = song;
+			nt.appendChild(art);
+			nt.appendChild(son);
+			
+			var qqq = document.getElementById("qqq");
+			qqq.appendChild(tt);
+		}
+
+		dequeue() {
+			let node = this.front;
+			//console.log('DEQUEUE', node ? node.value : '');
+			if (!this.isEmpty()) {
+			this.front = this.front.next;	   
+			}
+			if (!this.front) {
+			this.back = null;
+			}
+			return node;
+		}
+	}
+
+</script>
 </body>
 </html>
