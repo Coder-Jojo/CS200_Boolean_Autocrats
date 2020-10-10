@@ -31,3 +31,89 @@
     height: 680px;
     overflow: scroll;
 }
+.container {
+  display: inline-flex;
+  flex-direction: column;
+}
+progress 
+{
+	width:auto;
+}
+
+.form_back{
+    position: relative;
+    width: 100%;
+    background-color:  black;
+}
+.reg2{
+    position: absolute;
+    background-color:  black;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 10% 20% 70%;
+}
+
+.container {
+    padding: 16px;
+	
+}
+
+input[type=text] {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  input[type=text]:focus{
+    background-color: #ddd;
+    outline: none;
+  }
+  .registerbtn {
+	background-color:black;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+	font-family:Segoe Script;
+	border:1px solid white;
+	border-radius:10px;
+  }
+
+  .registerbtn:focus {
+    background-color:black;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    font-family:Segoe Script;
+    border:1px solid white;
+    border-radius:10px;
+    }
+  
+  .registerbtn:hover {
+    color:black;
+	background-color:white;
+  }
+
+  .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+
+  .word_3{
+    color: darkorange;
+    font-weight: 300;
+  }
