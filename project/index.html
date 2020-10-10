@@ -482,6 +482,32 @@ newname=filename+".webp";
 		var form = document.forms["form"];
 		q.enqueue(form["song_name"].value, form["artist_name"].value);
 	}
+	function checkexist(){
+		var form = document.forms["form"];
+				var newname=form["song_name"].value+".mp3";
+				var ans;
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+						dead();
+				})
+				.catch(function(error){M.toast({html:'The song has not been uploaded yet!',classes:'rounded'});});
+	}
+
+	function pead(){
+		var form = document.getElementById("song-search").value;
+		q.enqueue(form, form);
+	}
+
+	function playq(){
+		var form = document.getElementById("song-search").value;
+				var newname=form+".mp3";
+				var storage=firebase.storage().ref(newname);
+				storage.getDownloadURL().then(function(url){
+						pead();
+				})
+				.catch(function(error){M.toast({html:'The song has not been uploaded yet!',classes:'rounded'});});
+	}
+
 
 </script>
 </body>
