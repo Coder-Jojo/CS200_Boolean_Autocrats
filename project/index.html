@@ -446,6 +446,43 @@ newname=filename+".webp";
 		}
 	}
 
+	var q = new Queue();
+	function que(){
+		var form = document.forms["form"];
+		q.enqueue(form["song_name"].value, form["artist_name"].value);
+
+	}
+	var xx = document.getElementById("qqq");
+	xx.removeChild(xx.childNodes[0]);
+	function deq(){
+		q.dequeue();
+		var xx = document.getElementById("qqq");
+		xx.removeChild(xx.childNodes[0]);
+		console.log("deq worked");
+	}
+
+	function play_next(){
+		if(!q.isEmpty()){
+			sea(q.front.song);
+			setTimeout(function(){
+				document.getElementById("playing-song").play();
+			}, 1500);
+		}
+	}
+
+	var aud = document.getElementById("playing-song");
+	aud.onended = function() {
+		console.log("working");
+		deq();
+		play_next();
+	};
+
+	function dead(){
+		console.log("worked tf");
+		var form = document.forms["form"];
+		q.enqueue(form["song_name"].value, form["artist_name"].value);
+	}
+
 </script>
 </body>
 </html>
